@@ -1,0 +1,17 @@
+{
+  "extName": {
+    "message": "Pular Anúncios"
+  },
+  "extDesc": {
+    "message": "Pula anúncios do YouTube automaticamente de forma instantânea para poupar seu tempo."
+  },
+  "title": {
+    "message": "Pular Anúncios"
+  },
+  "skippedLabel": {
+    "message": "Anúncios Pulados"
+  },
+  "skippedDesc": {
+    "message": "Economizando seu tempo de forma automática"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "extName": {
+    "message": "SkipAD"
+  },
+  "extDesc": {
+    "message": "自动瞬间跳过YouTube广告，节省您的时间。"
+  },
+  "title": {
+    "message": "SkipAD"
+  },
+  "skippedLabel": {
+    "message": "已跳过广告"
+  },
+  "skippedDesc": {
+    "message": "自动节省您的时间"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "extName": {
+    "message": "SkipAD"
+  },
+  "extDesc": {
+    "message": "Passer automatiquement et instantanément les publicités YouTube pour gagner du temps."
+  },
+  "title": {
+    "message": "SkipAD"
+  },
+  "skippedLabel": {
+    "message": "Publicités Passées"
+  },
+  "skippedDesc": {
+    "message": "Gain de temps automatique"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "extName": {
+    "message": "SkipAD"
+  },
+  "extDesc": {
+    "message": "Überspringt YouTube-Werbung automatisch und sofort, um Zeit zu sparen."
+  },
+  "title": {
+    "message": "SkipAD"
+  },
+  "skippedLabel": {
+    "message": "Übersprungene Werbung"
+  },
+  "skippedDesc": {
+    "message": "Spart automatisch Ihre Zeit"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "extName": {
+    "message": "SkipAD"
+  },
+  "extDesc": {
+    "message": "YouTubeの広告を自動的かつ瞬時にスキップし、時間を節約します。"
+  },
+  "title": {
+    "message": "SkipAD"
+  },
+  "skippedLabel": {
+    "message": "スキップされた広告"
+  },
+  "skippedDesc": {
+    "message": "自動的に時間を節約"
+  }
+}

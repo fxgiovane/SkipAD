@@ -1,0 +1,17 @@
+{
+  "extName": {
+    "message": "SkipAD"
+  },
+  "extDesc": {
+    "message": "Secara otomatis melewati iklan YouTube secara instan untuk menghemat waktu Anda."
+  },
+  "title": {
+    "message": "SkipAD"
+  },
+  "skippedLabel": {
+    "message": "Iklan Dilewati"
+  },
+  "skippedDesc": {
+    "message": "Menghemat waktu Anda secara otomatis"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "extName": {
+    "message": "SkipAD"
+  },
+  "extDesc": {
+    "message": "YouTube 광고를 자동으로 즉시 건ner뛰어 시간을 절약해 드립니다."
+  },
+  "title": {
+    "message": "SkipAD"
+  },
+  "skippedLabel": {
+    "message": "건너뛴 광고"
+  },
+  "skippedDesc": {
+    "message": "자동으로 시간 절약"
+  }
+}

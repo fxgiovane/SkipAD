@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>SkipAD</title>
+  <style>
+    :root {
+      --bg: #09090b;
+      --card: rgba(255, 255, 255, 0.03);
+      --card-hover: rgba(255, 255, 255, 0.05);
+      --border: rgba(255, 255, 255, 0.08);
+      --primary: #a855f7;
+      --secondary: #06b6d4;
+      --text: #f4f4f5;
+      --muted: #a1a1aa;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      width: 280px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      padding: 16px;
+      overflow: hidden;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo-container img {
+      width: 24px;
+      height: 24px;
+    }
+    h1 {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .sw {
+      position: relative;
+      width: 36px;
+      height: 20px;
+    }
+    .sw input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .sw .slider {
+      position: absolute;
+      cursor: pointer;
+      inset: 0;
+      background: #27272a;
+      border-radius: 20px;
+      transition: all 0.25s ease;
+      border: 1px solid var(--border);
+    }
+    .sw .slider::before {
+      content: "";
+      position: absolute;
+      height: 12px;
+      width: 12px;
+      left: 3px;
+      bottom: 3px;
+      background: #fff;
+      border-radius: 50%;
+      transition: all 0.25s ease;
+    }
+    .sw input:checked + .slider {
+      background: linear-gradient(135deg, var(--secondary), var(--primary));
+      border-color: transparent;
+      box-shadow: 0 0 10px rgba(6, 182, 212, 0.3);
+    }
+    .sw input:checked + .slider::before {
+      transform: translateX(16px);
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+      transition: all 0.25s ease;
+    }
+    .card:hover {
+      background: var(--card-hover);
+      border-color: rgba(255, 255, 255, 0.12);
+    }
+    .counter-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .counter-value {
+      font-size: 32px;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--secondary), var(--primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 2px;
+    }
+    .counter-desc {
+      font-size: 11px;
+      color: var(--muted);
+    }
+    footer {
+      margin-top: 12px;
+      text-align: center;
+      font-size: 10px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="icons/icon32.png" alt="Logo">
+      <h1 id="ext-title" data-i18n="extName">SkipAD</h1>
+    </div>
+    <label class="sw">
+      <input type="checkbox" id="toggle-active" checked>
+      <span class="slider"></span>
+    </label>
+  </header>
+
+  <div class="card">
+    <div class="counter-label" id="label-skipped" data-i18n="skippedLabel">Anúncios Pulados</div>
+    <div class="counter-value" id="counter">0</div>
+    <div class="counter-desc" id="desc-skipped" data-i18n="skippedDesc">Economizando seu tempo de forma automática</div>
+  </div>
+
+  <footer>
+    <span>v1.0.0</span>
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>

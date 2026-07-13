@@ -1,0 +1,17 @@
+{
+  "extName": {
+    "message": "SkipAD"
+  },
+  "extDesc": {
+    "message": "आपका समय बचाने के लिए YouTube विज्ञापनों को स्वचालित रूप से तुरंत छोड़ देता है।"
+  },
+  "title": {
+    "message": "SkipAD"
+  },
+  "skippedLabel": {
+    "message": "छोड़े गए विज्ञापन"
+  },
+  "skippedDesc": {
+    "message": "स्वचालित रूप से आपका समय बचा रहा है"
+  }
+}

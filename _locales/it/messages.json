@@ -1,0 +1,17 @@
+{
+  "extName": {
+    "message": "SkipAD"
+  },
+  "extDesc": {
+    "message": "Salta automaticamente e istantaneamente gli annunci di YouTube per risparmiare tempo."
+  },
+  "title": {
+    "message": "SkipAD"
+  },
+  "skippedLabel": {
+    "message": "Annunci Saltati"
+  },
+  "skippedDesc": {
+    "message": "Risparmio di tempo automatico"
+  }
+}

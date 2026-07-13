@@ -1,0 +1,17 @@
+{
+  "extName": {
+    "message": "SkipAD"
+  },
+  "extDesc": {
+    "message": "Автоматически и мгновенно пропускает рекламу на YouTube, экономя ваше время."
+  },
+  "title": {
+    "message": "SkipAD"
+  },
+  "skippedLabel": {
+    "message": "Пропущено рекламы"
+  },
+  "skippedDesc": {
+    "message": "Экономия вашего времени автоматически"
+  }
+}

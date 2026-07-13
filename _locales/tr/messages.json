@@ -1,0 +1,17 @@
+{
+  "extName": {
+    "message": "SkipAD"
+  },
+  "extDesc": {
+    "message": "Zaman kazanmak için YouTube reklamlarını otomatik ve anında atlar."
+  },
+  "title": {
+    "message": "SkipAD"
+  },
+  "skippedLabel": {
+    "message": "Atlanan Reklamlar"
+  },
+  "skippedDesc": {
+    "message": "Zamanınızı otomatik olarak korur"
+  }
+}
