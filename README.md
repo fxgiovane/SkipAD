@@ -1,13 +1,13 @@
 <p align="center">
-  <img src="icons/icon128.png" width="80" alt="Pular Anúncios">
+  <img src="icons/icon128.png" width="80" alt="SkipAD">
 </p>
 
-<h1 align="center">Pular Anúncios / SkipAD</h1>
+<h1 align="center">SkipAD</h1>
 
 <p align="center">
-  Extensão Chrome para pular anúncios automaticamente e acelerar comerciais não puláveis no YouTube.
+  Pula anúncios automaticamente e acelera comerciais não puláveis no YouTube.
   <br>
-  <i>Chrome extension to automatically skip ads and speed up non-skippable commercials on YouTube.</i>
+  <i>Automatically skip ads and speed up non-skippable commercials on YouTube.</i>
 </p>
 
 <p align="center">
@@ -21,67 +21,56 @@
 
 ## Português
 
-O YouTube exibe anúncios que interrompem a reprodução. Esta extensão detecta instantaneamente o estado de anúncio do player do YouTube, clica de forma rápida nos botões de pulo e acelera anúncios não puláveis (silenciados) até o final.
+Extensão leve que monitora o player do YouTube para pular propagandas imediatamente e acelerar as que não podem ser puladas.
 
-### Instalação manual
+### Como instalar
 
-1. Baixe o código do repositório e extraia onde preferir.
-2. Acesse `chrome://extensions` no navegador Chrome.
+1. Baixe o código deste repositório.
+2. Acesse `chrome://extensions` no Chrome.
 3. Ative o **Modo do desenvolvedor** (canto superior direito).
-4. Clique em **Carregar sem compactação** (canto superior esquerdo).
-5. Selecione a pasta do projeto.
-6. Abra o YouTube e clique no ícone da extensão para ver as métricas.
+4. Clique em **Carregar sem compactação** e selecione a pasta do projeto.
 
-### Como funciona
+### Recursos
 
-- **Pulo Automático:** Monitora o player do YouTube e clica programaticamente no botão de pular anúncios no mesmo milissegundo em que ele se torna visível.
-- **Aceleração 16x:** Se for um anúncio não pulável, o script acelera a reprodução da tag `<video>` para 16x (velocidade máxima permitida pelo navegador). O anúncio de 5s termina em ~0.3s.
-- **Silenciamento Nativos:** O vídeo é mutado dinamicamente durante todo o anúncio e o som original do usuário é restaurado no término da propaganda.
-- **Contador no Painel:** O número total de blocos de anúncios evitados é registrado de forma persistente.
-
-### Proteções
-
-| Nome | Função |
-|------|--------|
-| Anti-Reset Guard | Bloqueia tentativas do player do YouTube de reduzir a velocidade (16x) ou reativar o áudio do anúncio. |
-| Circuit Breaker | Desliga loops e MutationObservers se ocorrerem 5 falhas consecutivas de reprodução, reiniciando o script 5s após resfriamento. |
-| SPA Navigation Safe | Se adapta a navegações assíncronas do YouTube sem necessidade de recarregar a página (F5). |
-| Safe Ending Seek | Avança o tempo do anúncio para `duration - 0.1` de forma segura (ignora lives) para forçar o fechamento sem quebras no player. |
+- **Pulo Instantâneo:** Clica nos botões de pular no mesmo instante em que aparecem no DOM.
+- **Aceleração 16x:** Aumenta a velocidade de reprodução para 16x em anúncios obrigatórios. Um comercial de 5 segundos termina em 0.3 segundos.
+- **Mute Automático:** Silencia o áudio durante a propaganda e restaura o volume original do usuário após o término.
+- **Circuit Breaker:** Desativa o monitoramento se ocorrerem erros persistentes para poupar CPU, reiniciando o loop após 5 segundos.
+- **Suporte SPA:** Funciona durante a navegação entre vídeos sem precisar recarregar a página.
 
 ---
 
 ## English
 
-YouTube displays ads that interrupt your playback. This extension instantly detects the ad-showing state of the YouTube player, clicks skip buttons at high speed, and fast-forwards non-skippable commercials (muted) to the end.
+Lightweight extension that monitors the YouTube player to skip ads immediately and speed up non-skippable ones.
 
-### Manual install
+### How to install
 
-1. Download the repository source code and extract it.
-2. Go to `chrome://extensions` in your Chrome browser.
+1. Download the repository source code.
+2. Go to `chrome://extensions` in Chrome.
 3. Enable **Developer mode** (top right).
-4. Click **Load unpacked** (top left).
-5. Select the project folder.
-6. Open YouTube and click the extension icon to view statistics.
+4. Click **Load unpacked** and select the project folder.
 
-### How it works
+### Features
 
-- **Auto Skip:** Watches the YouTube player and clicks the skip button programmatically the exact millisecond it becomes visible.
-- **16x Speed:** If it is a non-skippable ad, the script speeds up the `<video>` playback rate to 16x (maximum allowed by the browser). A 5s ad finishes in ~0.3s.
-- **Native Muting:** The video is dynamically muted during the ad, and the user's original volume is restored upon ad completion.
-- **Dashboard Counter:** The total number of avoided ad blocks is recorded and persist in the storage.
+- **Instant Skip:** Clicks skip buttons the exact moment they appear in the DOM.
+- **16x Speed:** Speeds up non-skippable ads to 16x. A 5-second commercial ends in 0.3 seconds.
+- **Auto Mute:** Mutes the ad volume and restores the user's original volume afterward.
+- **Circuit Breaker:** Stops execution after persistent errors to save CPU, retrying after 5 seconds.
+- **SPA Safe:** Works across video navigations without requiring page reloads.
 
 ---
 
 ## Estrutura / Structure
 
 ```
-content.js      Lógica principal e anti-reset / Main logic and anti-reset
-popup.html      Interface do popup com vidro e neon / Popup UI
-popup.js        Lógica de controle e tradução / Control logic and i18n
-manifest.json   Manifest V3 de permissões mínimas
-_locales/       18 idiomas (pt_BR, en, es, fr, de, it, ja, ko, zh_CN...)
-icons/          Ícones transparentes PNG (16, 32, 48, 128px)
-utils/          Assets promocionais de Web Store
+content.js      Lógica principal e interceptação de eventos / Core logic and event interception
+popup.html      Interface visual / Popup UI
+popup.js        Lógica de controle e locales / Control logic and i18n
+manifest.json   Manifest V3
+_locales/       Suporte a 18 idiomas / 18 locales supported
+icons/          Ícones (16, 32, 48, 128px)
+utils/          Assets promocionais
 ```
 
 ## Licença / License
