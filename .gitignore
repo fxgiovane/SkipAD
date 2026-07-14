@@ -13,3 +13,4 @@ html.html
 node_modules/
 dist/
 build/
+_metadata/

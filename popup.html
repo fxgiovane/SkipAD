@@ -146,6 +146,19 @@
       background: rgba(239, 68, 68, 0.1);
       transform: rotate(-45deg);
     }
+    #btn-debug {
+      background: none;
+      border: none;
+      color: var(--muted);
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      transition: all 0.2s ease;
+    }
+    #btn-debug:hover { color: #f59e0b; background: rgba(245, 158, 11, 0.1); }
+    #btn-debug.active { color: #f59e0b; }
 
     @keyframes bounce {
       0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
@@ -238,12 +251,19 @@
   </div>
 
   <footer>
-    <span>v1.0.0</span>
-    <button id="btn-reset" title="Resetar estatísticas">
-      <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
-      </svg>
-    </button>
+    <span id="ext-version"></span>
+    <div style="display:flex;gap:6px;align-items:center">
+      <button id="btn-debug" title="Debug mode">
+        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2a4 4 0 0 0-4 4v1H6a2 2 0 0 0 0 4h1v2H6a2 2 0 0 0 0 4h2v1a4 4 0 0 0 8 0v-1h2a2 2 0 0 0 0-4h-1v-2h1a2 2 0 0 0 0-4h-2V6a4 4 0 0 0-4-4z"/>
+        </svg>
+      </button>
+      <button id="btn-reset" title="Resetar estatísticas">
+        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+        </svg>
+      </button>
+    </div>
   </footer>
 
   <script src="popup.js"></script>
