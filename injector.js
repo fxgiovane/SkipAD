@@ -149,7 +149,7 @@
 
   const origDefineProperty = Object.defineProperty;
   Object.defineProperty = function (obj, prop, descriptor) {
-    if (isActive() && obj === window && (prop === 'ytInitialPlayerResponse' || prop === 'ytInitialData')) {
+    if (obj === window && (prop === 'ytInitialPlayerResponse' || prop === 'ytInitialData') && isActive()) {
       if (descriptor && descriptor.value) {
         stripAdsFromObject(descriptor.value);
       }

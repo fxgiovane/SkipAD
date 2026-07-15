@@ -90,12 +90,12 @@
   ];
 
   let active = true;
-  document.documentElement.dataset.skipadActive = '1';
   let handling = false;
   let saved = { rate: 1, muted: false, volume: 1 };
   let ticker = null;
   let observer = null;
   let pollTicker = null;
+  let videoListenerInterval = null;
   let errorCount = 0;
   let styleTag = null;
   let domObserver = null;
@@ -461,8 +461,9 @@
   }
 
   function setupVideoListener() {
+    if (videoListenerInterval) clearInterval(videoListenerInterval);
     let lastSrc = '';
-    setInterval(() => {
+    videoListenerInterval = setInterval(() => {
       try {
         const v = video();
         if (!v) return;

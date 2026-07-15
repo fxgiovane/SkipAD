@@ -85,15 +85,6 @@
     }
   },
   {
-    "id": 10,
-    "priority": 1,
-    "action": { "type": "block" },
-    "condition": {
-      "urlFilter": "||youtube.com/api/stats/qoe?*adformat",
-      "resourceTypes": ["xmlhttprequest", "image", "ping"]
-    }
-  },
-  {
     "id": 11,
     "priority": 1,
     "action": { "type": "block" },
