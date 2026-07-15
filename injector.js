@@ -21,7 +21,7 @@
   ];
 
   function isActive() {
-    return document.documentElement.dataset.skipadActive !== '0';
+    return document.documentElement.dataset.skipadActive === '1';
   }
 
   function stripAdsFromObject(obj) {
