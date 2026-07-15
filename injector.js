@@ -31,12 +31,6 @@
         delete obj[key];
       }
     }
-    if (obj.playerResponse) {
-      stripAdsFromObject(obj.playerResponse);
-    }
-    if (obj.playerConfig && obj.playerConfig.adRequestConfig) {
-      delete obj.playerConfig.adRequestConfig;
-    }
     return obj;
   }
 
@@ -44,20 +38,6 @@
     if (!url) return false;
     const s = typeof url === 'string' ? url : url.toString();
     return AD_URL_PATTERNS.some(p => s.includes(p));
-  }
-
-  function safeHeaders(original) {
-    const h = new Headers();
-    try {
-      for (const [k, v] of original.entries()) {
-        const lk = k.toLowerCase();
-        if (lk === 'content-encoding' || lk === 'content-length') continue;
-        h.set(k, v);
-      }
-    } catch (_) {
-      h.set('Content-Type', 'application/json; charset=UTF-8');
-    }
-    return h;
   }
 
   const originalFetch = window.fetch;
@@ -74,22 +54,7 @@
       }));
     }
 
-    return originalFetch.apply(this, arguments).then(response => {
-      if (url.includes('/youtubei/v1/player') || url.includes('/youtubei/v1/next') || url.includes('/youtubei/v1/updated_metadata')) {
-        const clone = response.clone();
-        return clone.json().then(data => {
-          stripAdsFromObject(data);
-          return new Response(JSON.stringify(data), {
-            status: response.status,
-            statusText: response.statusText,
-            headers: safeHeaders(response.headers)
-          });
-        }).catch(() => response);
-      }
-      return response;
-    }).catch(err => {
-      throw err;
-    });
+    return originalFetch.apply(this, arguments);
   };
 
   const originalOpen = XMLHttpRequest.prototype.open;
@@ -121,9 +86,6 @@
   function patchInitialData() {
     if (!isActive()) return;
     try {
-      if (window.ytInitialPlayerResponse) {
-        stripAdsFromObject(window.ytInitialPlayerResponse);
-      }
       if (window.ytInitialData) {
         stripAdsFromObject(window.ytInitialData);
         if (window.ytInitialData.contents) {
@@ -149,7 +111,7 @@
 
   const origDefineProperty = Object.defineProperty;
   Object.defineProperty = function (obj, prop, descriptor) {
-    if (obj === window && (prop === 'ytInitialPlayerResponse' || prop === 'ytInitialData') && isActive()) {
+    if (obj === window && prop === 'ytInitialData' && isActive()) {
       if (descriptor && descriptor.value) {
         stripAdsFromObject(descriptor.value);
       }
