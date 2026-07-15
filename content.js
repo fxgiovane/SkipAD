@@ -90,6 +90,7 @@
   ];
 
   let active = true;
+  document.documentElement.dataset.skipadActive = '1';
   let handling = false;
   let saved = { rate: 1, muted: false, volume: 1 };
   let ticker = null;
@@ -496,6 +497,7 @@
 
   chrome.storage.local.get({ active: true, debug: false }, (d) => {
     active = d.active;
+    document.documentElement.dataset.skipadActive = active ? '1' : '0';
     debug = !!d.debug;
     log('content.js loaded, active:', active);
     if (!attach()) waitForPlayer();
@@ -519,6 +521,7 @@
     if (ns === 'local') {
       if (changes.active) {
         active = changes.active.newValue;
+        document.documentElement.dataset.skipadActive = active ? '1' : '0';
         onChange();
       }
       if (changes.debug) {

@@ -20,6 +20,10 @@
     'adsserver.yt'
   ];
 
+  function isActive() {
+    return document.documentElement.dataset.skipadActive !== '0';
+  }
+
   function stripAdsFromObject(obj) {
     if (!obj || typeof obj !== 'object') return obj;
     for (const key of BLOCKED_AD_KEYS) {
@@ -42,8 +46,24 @@
     return AD_URL_PATTERNS.some(p => s.includes(p));
   }
 
+  function safeHeaders(original) {
+    const h = new Headers();
+    try {
+      for (const [k, v] of original.entries()) {
+        const lk = k.toLowerCase();
+        if (lk === 'content-encoding' || lk === 'content-length') continue;
+        h.set(k, v);
+      }
+    } catch (_) {
+      h.set('Content-Type', 'application/json; charset=UTF-8');
+    }
+    return h;
+  }
+
   const originalFetch = window.fetch;
   window.fetch = function (input, init) {
+    if (!isActive()) return originalFetch.apply(this, arguments);
+
     const url = typeof input === 'string' ? input : (input && input.url ? input.url : (input && input.href ? input.href : ''));
 
     if (isAdUrl(url)) {
@@ -62,7 +82,7 @@
           return new Response(JSON.stringify(data), {
             status: response.status,
             statusText: response.statusText,
-            headers: response.headers
+            headers: safeHeaders(response.headers)
           });
         }).catch(() => response);
       }
@@ -77,7 +97,7 @@
 
   XMLHttpRequest.prototype.open = function (method, url) {
     this._skipad_url = typeof url === 'string' ? url : url.toString();
-    this._skipad_blocked = isAdUrl(this._skipad_url);
+    this._skipad_blocked = isActive() && isAdUrl(this._skipad_url);
     return originalOpen.apply(this, arguments);
   };
 
@@ -99,6 +119,7 @@
   };
 
   function patchInitialData() {
+    if (!isActive()) return;
     try {
       if (window.ytInitialPlayerResponse) {
         stripAdsFromObject(window.ytInitialPlayerResponse);
@@ -128,7 +149,7 @@
 
   const origDefineProperty = Object.defineProperty;
   Object.defineProperty = function (obj, prop, descriptor) {
-    if (obj === window && (prop === 'ytInitialPlayerResponse' || prop === 'ytInitialData')) {
+    if (isActive() && obj === window && (prop === 'ytInitialPlayerResponse' || prop === 'ytInitialData')) {
       if (descriptor && descriptor.value) {
         stripAdsFromObject(descriptor.value);
       }
@@ -160,6 +181,7 @@
   document.addEventListener('yt-page-data-updated', patchInitialData);
 
   document.addEventListener('skipad-force-skip', () => {
+    if (!isActive()) return;
     try {
       const mp = document.getElementById('movie_player');
       if (mp) {
